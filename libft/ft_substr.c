@@ -3,49 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:06 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/07 12:29:10 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/13 10:43:49 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/25 17:58:35 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static size_t	maxlen(const char *s, size_t len)
+static size_t	max(const char *s, size_t len, int start)
 {
 	size_t	i;
 
 	i = 0;
-	while (len > i && s[i])
+	while (i < len && s[start])
+	{
 		i++;
+		start++;
+	}
 	return (i);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	char	*p;
+	char	*tab;
 
 	i = 0;
-	if (!s)
-		return (NULL);
 	if (ft_strlen(s) < start)
 	{
-		p = malloc(sizeof(char) * 1);
-		if (p == NULL)
+		tab = malloc(sizeof(char) * 1);
+		if (!tab)
 			return (NULL);
-		p[0] = '\0';
-		return (p);
+		tab[i] = '\0';
+		return (tab);
 	}
-	p = malloc(sizeof(char) * (maxlen(s, len) + 1));
-	if (p == NULL)
+	tab = malloc(sizeof(char) * (max(s, len, (int)start) + 1));
+	if (!tab)
 		return (NULL);
-	while (i < len && s[start])
+	while (s[start] && i < len)
 	{
-		p[i] = s[start];
+		tab[i] = s[start];
 		i++;
 		start++;
 	}
-	p[i] = '\0';
-	return (p);
+	tab[i] = '\0';
+	return (tab);
 }

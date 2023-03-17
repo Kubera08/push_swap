@@ -3,59 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:17:30 by arnaud            #+#    #+#             */
-/*   Updated: 2023/02/18 17:05:10 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/17 15:32:08 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-
-void view(pile *pile_a)
+t_pile	*pile_last(t_pile *lst)
 {
-        while(pile_a)
-          {
-             printf("%d\n",pile_a->content);
-             pile_a = pile_a->pos;
-          }
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
-*/
 
-int last_param(int ac, char **av)
+void	pile_addback(t_pile **lst, t_pile *new)
 {
-	int i;
-		
-	i = 0;
-	while (i < ac - 1)
+	t_pile	*last;
+
+	if (!(*lst))
+		*lst = new;
+	else
 	{
-		i++;
+		last = pile_last(*(lst));
+		last->next = new;
 	}
-	return(i - 1);
 }
 
-void ft_fill(int ac, char **av, pile pile_a)
+void push_number(t_pile **pile_a, int new_data)
 {
-	int i;
-	int pos;
-	int content;
-
+	t_pile *new_element = malloc(sizeof(t_pile));
+	if (!new_element)
+		return ;
 	
-	pos = last_param(ac, av) + 1;
-	i = 0;
-	content = 0;
-
-	while(i < ac - 1)
-	{
-		content = ft_atoi(av[pos--]);
-		ft_lstadd_back(&pile_a, (ft_lstnew(content)));
-		i++;
-	}
+	new_element->content = new_data;
+	new_element->next = NULL;
 	
-	
+	pile_addback(pile_a, new_element);
 }
-
-

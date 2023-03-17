@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 13:16:06 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/03/25 10:58:06 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/18 15:22:04 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/22 15:24:22 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (lst)
+	if (!lst)
+		return (0);
+	while (lst != NULL)
 	{
-		lst = lst->next;
+		lst = lst -> next;
 		i++;
-	}	
+	}
 	return (i);
 }

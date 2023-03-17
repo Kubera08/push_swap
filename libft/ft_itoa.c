@@ -3,61 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 12:15:23 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/06 15:09:27 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/16 11:16:47 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/25 17:55:17 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static int	size(int n)
+static int	ft_count(int n)
 {
 	int	i;
 
 	i = 0;
 	if (n < 0)
-		n *= -1;
+		n = n * -1;
 	while (n != 0)
 	{
-		n /= 10;
+		n = n / 10;
 		i++;
 	}
 	return (i);
 }
 
-int	ft_hitoa(char *tab, long int nb, int i, int count)
+static int	ft_fill(char *tab, int count, int i, long int longn)
+
 {
-	if (nb < 0)
+	if (longn < 0)
 	{
-		nb *= -1;
 		tab[0] = '-';
 		i++;
+		longn = longn * -1;
 	}
 	tab[count] = '\0';
-	while (count-- > i)
+	while (count > i)
 	{
-		tab[count] = (nb % 10) + '0';
-		nb /= 10;
+		count--;
+		tab[count] = (longn % 10) + '0';
+		longn = longn / 10;
 	}
-	return (nb);
+	return (longn);
 }
 
 char	*ft_itoa(int n)
 {
-	int			i;
-	int			count;
 	char		*tab;
-	long int	nb;
+	int			count;
+	int			i;
+	long int	longn;
 
+	longn = n;
+	count = ft_count(longn);
 	i = 0;
-	nb = n;
-	count = size(nb);
-	if (nb < 0 || count == 0)
+	if (longn < 0 || count == 0)
 		count++;
-	tab = malloc(sizeof(char) * count + 1);
+	tab = malloc(sizeof(char) * (count + 1));
 	if (!tab)
 		return (NULL);
-	ft_hitoa(tab, nb, i, count);
+	ft_fill(tab, count, i, longn);
 	return (tab);
 }

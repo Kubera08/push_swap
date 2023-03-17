@@ -3,48 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 14:09:40 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/07 11:48:14 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/13 15:05:59 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/25 17:48:54 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_check(char c, char const *set)
+static int	ft_find(char c, char const *str)
 {
 	int	i;
 
 	i = 0;
-	while (set[i])
+	while (str[i])
 	{
-		if (set[i++] == c)
+		if (str[i] == c)
 			return (1);
+	i++;
 	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
+	char	*newtab;
 	int		j;
-	int		k;
-	char	*p;
+	int		len;
+	int		z;
 
-	i = 0;
+	len = ft_strlen(s1);
 	j = 0;
+	z = 0;
 	if (!s1)
 		return (NULL);
-	k = ft_strlen(s1);
-	while (s1[j] && ft_check(s1[j], set))
+	while ((ft_find(s1[j], set)) && s1[j])
 		j++;
-	while (k > j && ft_check(s1[k - 1], set))
-		k--;
-	p = malloc(sizeof(char) * (k - j + 1));
-	if (!p)
+	while ((ft_find(s1[len - 1], set)) && len > j)
+		len--;
+	newtab = malloc(sizeof(char) *((len - j) + 1));
+	if (!newtab)
 		return (NULL);
-	while (j < k)
-		p[i++] = s1[j++];
-	p[i] = '\0';
-	return (p);
+	while (j < len)
+	{
+		newtab[z] = s1[j];
+		j++;
+		z++;
+	}
+	newtab[z] = '\0';
+	return (newtab);
 }

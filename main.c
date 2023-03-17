@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/02/18 16:56:44 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/17 15:38:58 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,34 @@
 
 int main(int ac, char **av)
 {
-	pile *pile_a;
-	pile *pile_b;
-
+	t_pile *pile_a;
+	t_pile *pile_b;
+	int *tab;
+	int i;
+	int temp = ac - 1;
 	pile_a = NULL;
 	pile_b = NULL;
+	i = 0;
+	tab = malloc(sizeof(int) * ac);
 	
-	printf("%p", pile_a);
-	ft_fill(ac,av, *pile_a);
-	
-	// view(pile_a);
-	/*
-	
-	if(ac < 3)
-		return(1);
-	if (check(pile_a) == 0)
+	while(i != ac - 1) 
 	{
-		ft_fill(ac, av, &pile_a);
+		
+		tab[i] = ft_atoi(av[temp--]);
+		i++;
 	}
-	*/
-	return(0);
+	i = 0;
+	while(i < ac - 1) 
+	{
+		push_number(&pile_a, tab[i++]);
+	}
+
+	while (pile_a != NULL)
+	{
+		printf("%d\n", pile_a->content);
+		pile_a = pile_a ->next;
+	}
 	
+	return(0);
 }
 

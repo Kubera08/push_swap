@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:46:44 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/06 12:11:11 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/13 13:10:05 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/12/02 15:14:30 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
+	size_t	i;
 
 	i = 0;
 	if (!dst && !src)

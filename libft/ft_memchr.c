@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 11:54:13 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/01 13:28:50 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/11 19:17:13 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/23 16:16:56 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr( const void *memoryBlock, int searchedChar, size_t size )
 {
+	unsigned char	*place;
 	size_t			i;
-	unsigned char	*j;
 
+	place = (unsigned char *) memoryBlock;
 	i = 0;
-	j = (unsigned char *) s;
-	while (i < n)
+	while (i < size)
 	{
-		if (j[i] == (unsigned char)c)
-			return (&j[i]);
-		i++;
+		if (place[i] == (unsigned char) searchedChar)
+			return (&place[i]);
+	i++;
 	}
 	return (NULL);
 }

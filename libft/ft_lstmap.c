@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 15:26:42 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/07 16:05:11 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/25 16:09:38 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/12/02 15:15:31 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void*(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
 	t_list	*list;

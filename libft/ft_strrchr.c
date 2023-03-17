@@ -3,26 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:23:12 by cjimenez          #+#    #+#             */
-/*   Updated: 2021/12/01 15:57:12 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/09 13:26:55 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/11/25 17:44:48 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+static int	occurence(const char *str, int c)
 {
-	int		i;
+	int	n;
+	int	i;
 
-	i = ft_strlen(s);
-	if (s == NULL)
-		return (NULL);
-	while (i >= 0)
+	i = 0;
+	n = 0;
+	while (str[i])
 	{
-		if (s[i] == (char)c)
-			return ((char *) s + i);
-		i--;
+		if (str[i] == (char)c)
+		{
+			n++;
+		}
+		i++;
 	}
+	return (n);
+}
+
+char	*ft_strrchr(const char *str, int c)
+{
+	int	i;
+	int	o;
+
+	o = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (char)c)
+		{
+			o++;
+			if (o == occurence(str, c))
+			{
+				return ((char *)&str[i]);
+			}
+		}
+		i++;
+	}
+	if (str[i] == '\0' && c == '\0')
+		return ((char *)&str[i]);
 	return (NULL);
 }

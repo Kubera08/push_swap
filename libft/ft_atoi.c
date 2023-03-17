@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjimenez <cjimenez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:28:04 by cjimenez          #+#    #+#             */
-/*   Updated: 2022/03/10 15:27:32 by cjimenez         ###   ########.fr       */
+/*   Created: 2022/11/10 12:06:46 by abeaudui          #+#    #+#             */
+/*   Updated: 2022/12/06 12:43:59 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	sign;
-	int	result;
+	int	boite;
+	int	num;
 
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	boite = 1;
+	num = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	sign = 1;
+	if (str[i] == '-')
+		boite = -1;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
-	}
-	result = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + (str[i] - 48);
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return (num * boite);
 }

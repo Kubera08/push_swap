@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 15:17:03 by cjimenez          #+#    #+#             */
-/*   Updated: 2023/02/18 16:12:52 by arnaud           ###   ########.fr       */
+/*   Created: 2022/11/09 12:26:01 by abeaudui          #+#    #+#             */
+/*   Updated: 2023/03/17 15:25:36 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdlib.h>
-# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -25,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_atoi( char *str);
+int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
 void	*ft_calloc(size_t count, size_t size);
@@ -59,7 +58,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-t_list	*ft_lstnew(int content);
+t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -68,12 +67,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_printf(const char *str, ...);
-int		ft_params(char flag, va_list arg);
-int		ft_printf_s(va_list arg);
-int		ft_printf_d(va_list arg);
-void	ft_putstr(const char *str);
-void	ft_putchar(char c);
 
 #endif
