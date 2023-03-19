@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/17 15:38:58 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:25:00 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int main(int ac, char **av)
 		push_number(&pile_a, tab[i++]);
 	}
 
+	
+	swap_a(pile_a);
+	
 	while (pile_a != NULL)
 	{
 		printf("%d\n", pile_a->content);
 		pile_a = pile_a ->next;
 	}
-	
 	return(0);
 }
 
