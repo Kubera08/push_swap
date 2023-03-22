@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:51:00 by dsenatus          #+#    #+#             */
-/*   Updated: 2023/03/22 14:56:43 by abeaudui         ###   ########.fr       */
+/*   Created: 2023/03/22 15:09:37 by abeaudui          #+#    #+#             */
+/*   Updated: 2023/03/22 15:54:58 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isdigit(char c)
+void algo(t_pile **pile_a, t_pile **pile_b)
 {
-	if (c >= 48 && c <= 57)
-		return (0);
-	return (1);
+	int size;
+	int mid;
+	t_pile *temp;
+
+	temp = *pile_a;
+	size = lstsize(temp) / 2;
+
+	while (size != 0)
+	{
+		size--;
+		temp = temp->next;
+	}
+	mid = temp->content;
+	printf("%d", mid);
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	
+	
 }

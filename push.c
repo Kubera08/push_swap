@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsenatus <dsenatus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:31:32 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/03/20 14:04:45 by dsenatus         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:49:54 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_a(t_pile **pile_a, t_pile **pile_b)
+void push_b(t_pile **pile_a, t_pile **pile_b)
 {
 	
 	t_pile *temp;
 	temp = *pile_a;
-	
+	if(temp == NULL)
+		return ;
 	if(temp->next == NULL)
 	{
 		push_number(pile_b, temp->content);
@@ -30,16 +31,15 @@ void push_a(t_pile **pile_a, t_pile **pile_b)
 	t_pile *second_to_last = temp;
 	t_pile *last = temp->next;
 	second_to_last->next = NULL;
-	
 	push_number(pile_b, last->content);
 }
 
-void push_b(t_pile **pile_a, t_pile **pile_b)
+void push_a(t_pile **pile_a, t_pile **pile_b)
 {
-	
 	t_pile *temp;
 	temp = *pile_b;
-	
+	if(temp == NULL)
+		return ;
 	if(temp->next == NULL)
 	{
 		push_number(pile_a, temp->content);
@@ -52,6 +52,5 @@ void push_b(t_pile **pile_a, t_pile **pile_b)
 	t_pile *second_to_last = temp;
 	t_pile *last = temp->next;
 	second_to_last->next = NULL;
-	
 	push_number(pile_a, last->content);
 }

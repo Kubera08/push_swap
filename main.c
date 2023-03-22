@@ -6,7 +6,7 @@
 /*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/20 15:20:02 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:50:18 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,26 @@ int main(int ac, char **av)
 	i = 0;
 	tab = malloc(sizeof(int) * ac);
 	
+	if (is_number(av) == 1)
+		return 1;
 	while(i != ac - 1) 
 	{
 		
 		tab[i] = ft_atoi(av[temp--]);
 		i++;
 	}
+	if (is_double(tab) == 1)
+		return (1);
+	if (is_max_size(tab) == 1)
+		return (1);
 	i = 0;
 	while(i < ac - 1) 
 	{
 		push_number(&pile_a, tab[i++]);
 	}
 	i = 0;
-	push_a(&pile_a, &pile_b);
-	push_a(&pile_a, &pile_b);
+	//push_b(&pile_a, &pile_b);
+	//push_a(&pile_a, &pile_b);
 	//push_a(&pile_a, &pile_b);
 	//push_a(&pile_a, &pile_b);
 	//push_a(&pile_a, &pile_b);
@@ -47,16 +53,21 @@ int main(int ac, char **av)
 	//push_a(&pile_a, &pile_b);
 	//push_a(&pile_a, &pile_b);
 	//rotate(&pile_a);
-	reverse_rotate_b(&pile_b);
+	//reverse_rotate_b(&pile_b);
 	//rrr(&pile_a, &pile_b);
 	//ss(&pile_a, &pile_b);
+	
+
+	algo(&pile_a, &pile_b);	
+
+
+
+
 	
 	printf("/ PILE A /\n");
 	while (pile_a != NULL)
 	{
 		printf("| %d |", pile_a->content);
-		//printf("| %d |", pile_a->index);
-
 		pile_a = pile_a ->next;
 	}
 	
