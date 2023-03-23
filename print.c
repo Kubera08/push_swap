@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:28:00 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/23 17:35:04 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/23 18:21:12 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void print_a(t_pile **pile_a)
 {
+	if (*pile_a == NULL)
+	{
+		return ;
+	}
+	
 	printf(" PILE A \n");
 	while (*pile_a != NULL)
 	{
