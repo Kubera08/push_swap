@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:17:30 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/22 15:21:37 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:18:40 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,21 @@ int	lstsize(t_pile *lst)
 		i++;
 	}
 	return (i);
+}
+
+int *fill_tab(char **av, int ac)
+{
+	int i;
+	int *tab;
+	int temp = ac - 1;
+	tab = malloc(sizeof(int) * ac);
+
+	i = 0;
+	while(i != ac - 1 ) 
+	{
+		
+		tab[i++] = ft_atoi(av[temp--]);
+		
+	}
+	return (tab);
 }

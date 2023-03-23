@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:35:54 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/23 13:33:20 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/23 14:52:39 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,4 @@ int find_smallest(t_pile **pile)
 		temp = temp->next;
 	}
 	return(min);
-}
-
-int *fill_tab(char **av, int ac)
-{
-	int i;
-	int *tab;
-	int temp = ac - 1;
-	tab = malloc(sizeof(int) * ac);
-
-	i = 0;
-	while(i != ac - 1 ) 
-	{
-		
-		tab[i++] = ft_atoi(av[temp--]);
-		
-	}
-	return (tab);
 }
