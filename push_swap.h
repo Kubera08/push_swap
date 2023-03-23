@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:18:45 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/22 15:21:33 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:39:11 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_pile
 
 int main(int ac, char **av);
 void push_number(t_pile **first, int new_data);
-
 int	ft_atoi(const char *str);
 void swap_a(t_pile **pile);
 void swap_b(t_pile **pile);
@@ -46,6 +45,8 @@ int is_number(char **tab);
 int is_max_size(int *tab);
 void algo(t_pile **pile_a, t_pile **pile_b);
 int	lstsize(t_pile *pile);
-
+int *fill_tab(char **av, int ac);
+int find_smallest(t_pile **pile);
+int find_biggest(t_pile **pile);
 
 #endif

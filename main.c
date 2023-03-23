@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/22 15:50:18 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:50:12 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,60 +18,46 @@ int main(int ac, char **av)
 	t_pile *pile_b;
 	int *tab;
 	int i;
-	int temp = ac - 1;
+	
+	i = 0;
 	pile_a = NULL;
 	pile_b = NULL;
-	i = 0;
-	tab = malloc(sizeof(int) * ac);
 	
-	if (is_number(av) == 1)
-		return 1;
-	while(i != ac - 1) 
+	if (is_number(av) == 0)
+		{
+			tab = fill_tab(av, ac);
+			if (is_double(tab) == 0 && is_max_size(tab) == 0)
+			{
+				while(i < ac - 1) 
+				{
+					push_number(&pile_a, tab[i]);
+					i++;
+				}
+			}
+		}
+	
+	t_pile *temp;
+	temp = pile_a;
+	int max = find_biggest(&pile_a);
+	while (temp->next != NULL)
 	{
-		
-		tab[i] = ft_atoi(av[temp--]);
-		i++;
+		if (temp->content == max)
+		{
+			push_b(&temp, &pile_b);
+		}
+		temp = temp->next;
 	}
-	if (is_double(tab) == 1)
-		return (1);
-	if (is_max_size(tab) == 1)
-		return (1);
-	i = 0;
-	while(i < ac - 1) 
-	{
-		push_number(&pile_a, tab[i++]);
-	}
-	i = 0;
-	//push_b(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//push_a(&pile_a, &pile_b);
-	//rotate(&pile_a);
-	//reverse_rotate_b(&pile_b);
-	//rrr(&pile_a, &pile_b);
-	//ss(&pile_a, &pile_b);
+	
 	
 
-	algo(&pile_a, &pile_b);	
-
-
-
-
-	
-	printf("/ PILE A /\n");
+	printf(" PILE A \n");
 	while (pile_a != NULL)
 	{
 		printf("| %d |", pile_a->content);
 		pile_a = pile_a ->next;
 	}
 	
-	printf("\n/ PILE B /\n");
+	printf("\n PILE B \n");
 	while (pile_b != NULL)
 	{
 		printf("| %d |", pile_b->content);
