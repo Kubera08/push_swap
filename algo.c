@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:09:37 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/03/23 18:31:07 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/23 18:33:51 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ void sort(t_pile **pile_a, t_pile **pile_b)
 		if (last_content < mid_content) 
 		{
 			push_b(pile_a, pile_b);
-			print_all(pile_a, pile_b);
+		}
+		else if((*pile_a)->content < mid_content)
+		{
+			rotate_a(pile_a);
+			push_b(pile_a, pile_b);
 		}
 		
 		printf("appel numero %d\n", compteur);
