@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:09:37 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/03/25 13:42:47 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/25 13:43:06 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void sort(t_pile **pile_a, t_pile **pile_b)
 	{
 			sort2(pile_a, pile_b, mid_content);
 	}
-	
+
 }
 
 

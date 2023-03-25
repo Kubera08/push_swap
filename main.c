@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/25 13:35:28 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/25 13:50:37 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int main(int ac, char **av)
 			}
 		}
 	first = pile_a;
-	while (first->next != NULL)
+	while (first->next->next != NULL)
 		sort(&pile_a, &pile_b);
 		
-
+	if (pile_a->content < pile_a->next->content)
+		swap_a(&pile_a);
+	
 	print_all(&pile_a, &pile_b);
 	return(0);
 }
