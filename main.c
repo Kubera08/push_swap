@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/23 18:21:45 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/25 13:35:28 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int main(int ac, char **av)
 {
 	t_pile *pile_a;
 	t_pile *pile_b;
+	t_pile *first;
+
 	int *tab;
 	int i;
+	
 	
 	i = 0;
 	pile_a = NULL;
@@ -35,8 +38,12 @@ int main(int ac, char **av)
 				}
 			}
 		}
-	sort(&pile_a, &pile_b);
-//	print_all(&pile_a, &pile_b);
+	first = pile_a;
+	while (first->next != NULL)
+		sort(&pile_a, &pile_b);
+		
+
+	print_all(&pile_a, &pile_b);
 	return(0);
 }
 

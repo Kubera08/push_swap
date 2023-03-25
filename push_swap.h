@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:18:45 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/23 16:14:27 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/25 13:26:14 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,10 @@ int	lstsize(t_pile *pile);
 int *fill_tab(char **av, int ac);
 int find_smallest(t_pile **pile);
 int find_biggest(t_pile **pile);
-int ft_last_content(t_pile **pile);
 void rotate_a(t_pile **pile);
 void rotate_b(t_pile **pile);
-void print_a(t_pile **pile_a);
-void print_b(t_pile **pile_b);
 void print_all(t_pile **pile_a, t_pile **pile_b);
-void sort2(int mid_content, t_pile **pile_a, t_pile **pile_b);
+t_pile *find_adress(t_pile **pile_a, int mid);
+int is_sorted(t_pile **pile_a, int nb);
 
 #endif
