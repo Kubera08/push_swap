@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tri_3_5.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:26:09 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/03/30 14:06:55 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:53:19 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,42 +49,46 @@ void tri_3(t_pile **pile_a)
         }
 }
 
-int tab_len(int *tab)
+void    tri_4(t_pile **pile_a, t_pile **pile_b, int *tab)
 {
-    int i;
+    int min;
 
-    i = 0;
-    while(tab[i])
-        i++;
-    return (i);
-}
-void tri_5(t_pile **pile_a, t_pile **pile_b, int *tab)
-{
-   // t_pile *temp;
-    int i;
-    int mid;
-    t_pile *temp;
-    
-    temp = *pile_a;
-    mid = lstsize(*pile_a) / 2;
-    i = 0;
-    while(i != mid)
+    while (lstsize(*pile_a) != 3)
     {
-        temp = temp->next;
-        i++;
-    }
-    int mid_content = temp->content;
-    printf("mid content is %d", mid_content);
-    while(lstsize(*pile_a) != 3)
-    {
-        if( mid_content)
-            push_b(pile_a, pile_b);
-        else
+        if((*pile_a)->content == min)
+        {
             rotate_a(pile_a);
+            push_b(pile_a, pile_b);
 
+        }  
+        else 
+            rotate_a(pile_a);
+        min = find_smallest(pile_a);
     }
-   // print_all(pile_a, pile_b);
-    tri_3(pile_a);
     print_all(pile_a, pile_b);
-    
+    tri_3(pile_a);
+    push_a(pile_a, pile_b);
+}
+
+void    tri_5(t_pile **pile_a, t_pile **pile_b, int *tab)
+{
+    int min;
+
+    while (lstsize(*pile_a) != 3)
+    {
+        if((*pile_a)->content == min)
+        {
+            rotate_a(pile_a);
+            push_b(pile_a, pile_b);
+
+        }  
+        else 
+            rotate_a(pile_a);
+        min = find_smallest(pile_a);
+    }
+    tri_3(pile_a);
+    if ((*pile_b)->content > (*pile_b)->next->content)
+        swap_b(pile_b);
+    push_a(pile_a, pile_b);
+    push_a(pile_a, pile_b);  
 }

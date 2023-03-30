@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:18:45 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/30 14:10:25 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:55:44 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,7 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-typedef struct s_list
-{
-	int *tab;
-	int *sorted_tab;
-	int	mediane;
-	int	top;
-	int size_a;
-	int size_b;
-	int	nb;
-	int len;
-	
-} t_list;
+
 
 typedef struct s_pile
 {
@@ -39,10 +28,11 @@ typedef struct s_pile
 	
 }		t_pile;
 
-
 int main(int ac, char **av);
-void push_number(t_pile **first, int new_data);
-int	ft_atoi(const char *str);
+
+// OPERATIONS
+void rotate_a(t_pile **pile);
+void rotate_b(t_pile **pile);
 void swap_a(t_pile **pile);
 void swap_b(t_pile **pile);
 void push_a(t_pile **pile_a, t_pile **pile_b);
@@ -53,6 +43,19 @@ void rotate(t_pile **pile);
 void reverse_rotate_a(t_pile **pile);
 void reverse_rotate_b(t_pile **pile);
 void rrr(t_pile **pile_a, t_pile **pile_b);
+
+// UTILS
+void push_number(t_pile **first, int new_data);
+int tab_len(int *tab);
+int	ft_mediane(int *tab);
+int last_content(t_pile **pile);
+t_pile *add_index_a(t_pile **pile_a);
+t_pile *add_index_b(t_pile **pile_b);
+void add_index(t_pile **pile_a, t_pile **pile_b);
+int *sorted_tab(int *tab);
+t_pile *find_adress(t_pile **pile_a, int mid);
+int is_sorted(t_pile **pile_a, int nb);
+void print_all(t_pile **pile_a, t_pile **pile_b);
 int is_double(int *tab);
 int is_number(char **tab);
 int is_max_size(int *tab);
@@ -61,19 +64,12 @@ int	lstsize(t_pile *pile);
 int *fill_tab(char **av, int ac);
 int find_smallest(t_pile **pile);
 int find_biggest(t_pile **pile);
-void rotate_a(t_pile **pile);
-void rotate_b(t_pile **pile);
-void print_all(t_pile **pile_a, t_pile **pile_b);
-t_pile *find_adress(t_pile **pile_a, int mid);
-int is_sorted(t_pile **pile_a, int nb);
 
-t_pile *add_index_a(t_pile **pile_a);
-t_pile *add_index_b(t_pile **pile_b);
-void add_index(t_pile **pile_a, t_pile **pile_b);
-int *sorted_tab(int *tab);
+
+// ALGO
+void    tri_4(t_pile **pile_a, t_pile **pile_b, int *tab);
+void algo(t_pile **pile_a, t_pile **pile_b, int *tab);
 void tri_5(t_pile **pile_a, t_pile **pile_b, int *tab);
 void tri_3(t_pile **pile_a);
-int tab_len(int *tab);
-
 
 #endif

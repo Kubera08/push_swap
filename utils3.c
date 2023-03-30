@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/30 17:58:55 by arnaud           ###   ########.fr       */
+/*   Created: 2023/03/30 15:11:21 by arnaud            #+#    #+#             */
+/*   Updated: 2023/03/30 17:18:02 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int tab_len(int *tab)
 {
-	t_pile *pile_a;
-	t_pile *pile_b;
-	int *tab;
-	int *second_tab;
 	int i;
-	
+
 	i = 0;
-	pile_a = NULL;
-	pile_b = NULL;
+	while (tab[i])
+	{
+		i++;
+	}
+	return(i);
 	
-	if (is_number(av) == 0 && ac > 3)
-		{
-				tab = fill_tab(av, ac);
-			//if (is_double(tab) == 0 && is_max_size(tab) == 0)
-		//	{
-				while(i < ac - 1) 
-				{
-					push_number(&pile_a, tab[i]);
-					i++;
-				}
-			//}
-		}
-	second_tab = sorted_tab(tab);	
-	algo(&pile_a, &pile_b, tab);
-	add_index_a(&pile_a);
-	return(0);
+}
+
+int	ft_mediane(int *tab)
+{
+	int	i;
+	int size;
+	int mediane;
+	
+	size = tab_len(tab);
+	
+	if (size % 2 == 0)
+		mediane = size / 2;
+	else if (size % 2 != 0)
+	{
+		i = size / 2;
+		i++;
+		mediane = i;
+	}
+	return(mediane);
 }
 
