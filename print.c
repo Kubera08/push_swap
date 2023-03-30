@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:28:00 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/25 13:12:25 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/26 19:19:14 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ void print_all(t_pile **pile_a, t_pile **pile_b)
 	printf("\n/ PILE A /\n");
 	while (oui != NULL)
 	{
-		printf("| %d |", oui->content);
+		printf("| content is %d |", oui->content);		
+		printf("| index is %d |", oui->index);
+		printf("\n");
+
 		oui = oui->next;
 	}
 	printf("\n/ PILE B /\n");
 	while (non != NULL)
 	{
-		printf("| %d |", non->content);
-		non = non->next;
+		printf("| content is %d |", non->content);		
+		printf("| index is %d |", non->index);
+		printf("\n");		non = non->next;
 	}	
 }

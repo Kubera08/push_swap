@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:18:45 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/25 13:26:14 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/03/30 14:10:25 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 # include <stdio.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+
+typedef struct s_list
+{
+	int *tab;
+	int *sorted_tab;
+	int	mediane;
+	int	top;
+	int size_a;
+	int size_b;
+	int	nb;
+	int len;
+	
+} t_list;
 
 typedef struct s_pile
 {
@@ -53,5 +66,14 @@ void rotate_b(t_pile **pile);
 void print_all(t_pile **pile_a, t_pile **pile_b);
 t_pile *find_adress(t_pile **pile_a, int mid);
 int is_sorted(t_pile **pile_a, int nb);
+
+t_pile *add_index_a(t_pile **pile_a);
+t_pile *add_index_b(t_pile **pile_b);
+void add_index(t_pile **pile_a, t_pile **pile_b);
+int *sorted_tab(int *tab);
+void tri_5(t_pile **pile_a, t_pile **pile_b, int *tab);
+void tri_3(t_pile **pile_a);
+int tab_len(int *tab);
+
 
 #endif
