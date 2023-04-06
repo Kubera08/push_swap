@@ -6,7 +6,7 @@
 /*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:35:46 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/04/06 15:46:17 by abeaudui         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:54:00 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int which_combo(int index_a, int index_b, t_pile **pile_a, t_pile **pile_b)
         rotate_all = index_a;
     rarrb = 1 + index_a + (pile_last(pile_b)->index - index_b);
     rrarb = 1 + index_b + (pile_last(pile_a)->index - index_a);
-    if (rotate_all <= rarrb && rotate_all <= reverse_rotate_all && rotate_all <= rrarb)
+    if (rotate_all <= rarrb && rotate_all <= reverse_rotate_all && rotate_all <= rrarb) // si rotate all est le mouvement optimal
 		return (0);
-	if (reverse_rotate_all <= rarrb && reverse_rotate_all <= rotate_all && reverse_rotate_all <= rrarb)
+	if (reverse_rotate_all <= rarrb && reverse_rotate_all <= rotate_all && reverse_rotate_all <= rrarb) // si reverse rotate all est le mouvement optimal
 		return (1);
-	if (rarrb <= rrarb && rarrb <= reverse_rotate_all && rarrb <= rotate_all)
+	if (rarrb <= rrarb && rarrb <= reverse_rotate_all && rarrb <= rotate_all) // si rarrb est le mouvement optimal
 		return (2);
-	if (rrarb <= rarrb && rrarb <= reverse_rotate_all && rrarb <= rotate_all)
+	if (rrarb <= rarrb && rrarb <= reverse_rotate_all && rrarb <= rotate_all) // si rrarb est le mouvement optimal
 		return (3);
 }
 
@@ -94,9 +94,8 @@ void exec_if(t_pile **pile_a, t_pile **pile_b)
     t_struct tab;
     int combo;
 
-    tab = optimal_bloc(pile_a, pile_b);
-    combo = which_combo(tab.index_a, tab.index_b, pile_a, pile_b);
-    //printf("combo = %d\n", combo);
+    tab = optimal_bloc(pile_a, pile_b); // on va recolter les infos sur l'element dans b demandant le moins de mouvement a envoyer ainsi que l'element le plus proche de lui dans a
+    combo = which_combo(tab.index_a, tab.index_b, pile_a, pile_b); // on va obtenir le mouvement a effectuer en fonction du contexte
     if (combo == 0)
 		mouv_if_rr(pile_a, pile_b, tab);
 	if (combo == 1)
@@ -115,7 +114,7 @@ void exec(t_pile **pile_a, t_pile**pile_b)
     add_index(pile_a, pile_b);
     i = pile_last(pile_b)->index;
     print_all(pile_a, pile_b);
-    while(i != -1)
+    while(i != -1) // jusqu'a ce que la pile b soit vide
     {
         add_index(pile_a, pile_b);
         exec_if(pile_a, pile_b);
