@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:18:45 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/30 17:55:44 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/04/06 15:43:00 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ typedef struct s_pile
 	struct 			s_pile *next;
 	
 }		t_pile;
+
+typedef struct s_struct
+{
+	int				index_a;
+	int				index_b;
+	int				calcul;
+	int				val;
+	int				imaxa;
+	int				imaxb;
+	int				mouv;
+}					t_struct;
+
 
 int main(int ac, char **av);
 
@@ -64,6 +76,7 @@ int	lstsize(t_pile *pile);
 int *fill_tab(char **av, int ac);
 int find_smallest(t_pile **pile);
 int find_biggest(t_pile **pile);
+int    lst_cont(t_pile **pile);
 
 
 // ALGO
@@ -71,5 +84,14 @@ void    tri_4(t_pile **pile_a, t_pile **pile_b, int *tab);
 void algo(t_pile **pile_a, t_pile **pile_b, int *tab);
 void tri_5(t_pile **pile_a, t_pile **pile_b, int *tab);
 void tri_3(t_pile **pile_a);
+int which_combo(int index_a, int index_b, t_pile **pile_a, t_pile **pile_b);
+int how_many_moves(int index_a, int index_b, t_pile **pile_a, t_pile **pile_b);
+t_struct optimal_bloc(t_pile **pile_a, t_pile **pile_b);
+void exec_if(t_pile **pile_a, t_pile **pile_b);
+void exec(t_pile **pile_a, t_pile**pile_b);
+void	mouv_if_rarrb(t_pile **pile_a, t_pile **pile_b, t_struct tab);
+void	mouv_if_rrarb(t_pile **pile_a, t_pile **pile_b, t_struct tab);
+void	mouv_if_rrr(t_pile **pile_a, t_pile **pile_b, t_struct info);
+void	mouv_if_rr(t_pile **pile_a, t_pile **pile_b, t_struct tab);
 
 #endif

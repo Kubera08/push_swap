@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:11:21 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/30 17:18:02 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/04/06 15:35:27 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,13 @@ int	ft_mediane(int *tab)
 	return(mediane);
 }
 
+
+int    lst_cont(t_pile **pile)
+{
+    t_pile *tmp;
+
+    tmp = *pile;
+    while (tmp->next != NULL)
+        tmp = tmp->next;
+    return (tmp->content);
+}

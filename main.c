@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abeaudui <abeaudui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:29 by arnaud            #+#    #+#             */
-/*   Updated: 2023/03/30 17:58:55 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/04/06 15:47:13 by abeaudui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int ac, char **av)
 			//}
 		}
 	second_tab = sorted_tab(tab);	
-	algo(&pile_a, &pile_b, tab);
+	//algo(&pile_a, &pile_b, tab);
 	add_index_a(&pile_a);
 	return(0);
 }
